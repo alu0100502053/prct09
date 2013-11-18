@@ -20,7 +20,7 @@ class Matriz_dispersa < Matriz
 	attr_reader :matrix
 
 	def initialize(h = {})
-   	@matrix = Hash.new({})
+   	@matrix = Hash.new(0)
     	for k in h.keys do 
       	@matrix[k] = 	if h[k].is_a? Vector_disperso
          						h[k]
@@ -43,6 +43,7 @@ class Matriz_dispersa < Matriz
   	end
 
 	def +(other)  #Para la suma de matrices
+
    end
 
    def -(other)  #Para la resta de matrices

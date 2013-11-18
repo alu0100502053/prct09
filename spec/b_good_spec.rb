@@ -182,5 +182,12 @@ describe Matriz_densa do
 end
 
 describe Matriz_dispersa do
-
+	before :each do
+		@Matriz_dispersa = Matriz_dispersa.new(100 => {100 => 1, 500 => 200},  20000 => { 1000 => 3, 9000 => 200})
+	end
+	it "Debe poder acceder a los elementos de la matriz" do
+		@Matriz_dispersa[0][0].should eq(0)
+		@Matriz_dispersa[100][100].should eq(1)
+		@Matriz_dispersa[100][500].should eq(200)
+	end
 end
