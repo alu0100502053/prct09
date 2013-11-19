@@ -184,10 +184,21 @@ end
 describe Matriz_dispersa do
 	before :each do
 		@Matriz_dispersa = Matriz_dispersa.new(100 => {100 => 1, 500 => 200},  20000 => { 1000 => 3, 9000 => 200})
+		@Matriz_dispersa2 = Matriz_dispersa.new(100 => {100 => 2, 50 => 3},  200 => { 30 => 10})
 	end
 	it "Debe poder acceder a los elementos de la matriz" do
 		@Matriz_dispersa[0][0].should eq(0)
 		@Matriz_dispersa[100][100].should eq(1)
 		@Matriz_dispersa[100][500].should eq(200)
+	end
+
+	it "Debe poder sumar una matriz dispersa con otra" do
+		@Matriz_dispersa3 = @Matriz_dispersa + @Matriz_dispersa2
+		@Matriz_dispersa3[100][100].should eq(3)
+		@Matriz_dispersa3[100][50].should eq(3)
+		@Matriz_dispersa3[100][500].should eq(200)
+		@Matriz_dispersa3[200][30].should eq(10)
+		@Matriz_dispersa3[20000][1000].should eq(3)
+		@Matriz_dispersa3[20000][9000].should eq(200)
 	end
 end

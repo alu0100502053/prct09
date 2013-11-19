@@ -28,7 +28,7 @@ class Matriz_densa < Matriz
 
 	def [] (*ij)  #Recibe un numero de argumentos...
 		return @matriz[*ij] if ij.size == 1  #si el numero de argumentos es solo 1, entonces devolvemos toda la fila indicada.
-	   @matriz[ij.first][ij.last]  #si son 2, devuelveme el elemento indicado.
+	    @matriz[ij.first][ij.last]  #si son 2, devuelveme el elemento indicado.
 	end
 
 end

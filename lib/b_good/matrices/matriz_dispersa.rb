@@ -10,6 +10,22 @@ class Vector_disperso
     @vector.to_s
  	end
 
+ 	def keys
+ 		@vector.keys
+ 	end
+
+  def hash
+    @vector
+  end
+
+  def +(other)
+    @vector.merge!(other.hash){|key, oldval, newval| newval + oldval}
+  end
+
+ 	def []= (i,v)
+ 		@vector[i] = v
+ 	end
+
 	def [](i)
     	@vector[i] 
   	end
@@ -31,7 +47,15 @@ class Matriz_dispersa < Matriz
   	end
 
   	def [](i)
-    	@matrix[i]
+  		@matrix[i]
+  	end
+
+    def hash
+      @matrix
+    end
+
+  	def keys
+  		@matrix.keys
   	end
 
   	def col(j)
@@ -43,14 +67,13 @@ class Matriz_dispersa < Matriz
   	end
 
 	def +(other)  #Para la suma de matrices
-
+		ms = @matrix.clone
+		ms.merge!(other.hash){ |key, oldval, newval| newval + oldval}
    end
 
-   def -(other)  #Para la resta de matrices
-   end
+   # def -(other)  #Para la resta de matrices
+   # end
 
-   def *(other)  #Para la multiplicacion de matrices
-   end
-
-   
+   # def *(other)  #Para la multiplicacion de matrices
+   # end
 end
