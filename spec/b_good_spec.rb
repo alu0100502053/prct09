@@ -201,4 +201,14 @@ describe Matriz_dispersa do
 		@Matriz_dispersa3[20000][1000].should eq(3)
 		@Matriz_dispersa3[20000][9000].should eq(200)
 	end
+
+	it "Debe poder restar una matriz dispersa con otra" do
+		@Matriz_dispersa3 = @Matriz_dispersa - @Matriz_dispersa2
+		@Matriz_dispersa3[100][100].should eq(-1)
+		@Matriz_dispersa3[100][50].should eq(3)
+		@Matriz_dispersa3[100][500].should eq(200)
+		@Matriz_dispersa3[200][30].should eq(10)
+		@Matriz_dispersa3[20000][1000].should eq(3)
+		@Matriz_dispersa3[20000][9000].should eq(200)
+	end
 end

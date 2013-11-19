@@ -22,6 +22,10 @@ class Vector_disperso
     @vector.merge!(other.hash){|key, oldval, newval| newval + oldval}
   end
 
+  def -(other)
+    @vector.merge!(other.hash){|key, oldval, newval| newval - oldval}
+  end
+
  	def []= (i,v)
  		@vector[i] = v
  	end
@@ -71,8 +75,10 @@ class Matriz_dispersa < Matriz
 		ms.merge!(other.hash){ |key, oldval, newval| newval + oldval}
    end
 
-   # def -(other)  #Para la resta de matrices
-   # end
+   def -(other)  #Para la resta de matrices
+    ms = @matrix.clone
+    ms.merge!(other.hash){ |key, oldval, newval| newval - oldval}
+   end
 
    # def *(other)  #Para la multiplicacion de matrices
    # end
