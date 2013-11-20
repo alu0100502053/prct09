@@ -185,6 +185,8 @@ describe Matriz_dispersa do
 	before :each do
 		@Matriz_dispersa = Matriz_dispersa.new(100 => {100 => 1, 500 => 200},  20000 => { 1000 => 3, 9000 => 200})
 		@Matriz_dispersa2 = Matriz_dispersa.new(100 => {100 => 2, 50 => 3},  200 => { 30 => 10})
+		@Matriz_frac = Matriz_dispersa.new(0 => {0 => Racional.new(1,3), 1 => Racional.new(1,3)}, 2 => {0 => Racional.new(1,3), 2 => Racional.new(1,3)})
+		@Matriz_frac2 = Matriz_dispersa.new(0 => {0 => Racional.new(6,3), 1 => Racional.new(5,3)}, 2 => {0 => Racional.new(5,3), 2 => Racional.new(2,3)})
 	end
 	it "Debe poder acceder a los elementos de la matriz" do
 		@Matriz_dispersa[0][0].should eq(0)
@@ -200,6 +202,10 @@ describe Matriz_dispersa do
 		@Matriz_dispersa3[200][30].should eq(10)
 		@Matriz_dispersa3[20000][1000].should eq(3)
 		@Matriz_dispersa3[20000][9000].should eq(200)
+		@Matriz_dispersa4 = @Matriz_frac + @Matriz_frac2
+		@Matriz_dispersa4[0][0].should eq(Racional.new(7,3))
+		@Matriz_dispersa4[0][1].should eq(Racional.new(2,1))
+		@Matriz_dispersa4[2][0].should eq(Racional.new(2,1))
 	end
 
 	it "Debe poder restar una matriz dispersa con otra" do
@@ -211,4 +217,33 @@ describe Matriz_dispersa do
 		@Matriz_dispersa3[20000][1000].should eq(3)
 		@Matriz_dispersa3[20000][9000].should eq(200)
 	end
+
+	it "Debe poder multiplicar una matriz dispersa con otra" do
+		@a = Matriz_dispersa.new(0 => {0 => 7, 1 => 1}, 2 => {0 => 2, 2 => 3})
+		@b = Matriz_dispersa.new(0 => {0 => 2, 1 => 3}, 1 => {0 => 2}, 2 => {2 => 1})
+		@c = Matriz_dispersa.new(0 => {0 => 1}, 1 => {1 => 2}, 2 => {2 => 2})
+		@d = Matriz_dispersa.new(0 => {0 => 3, 2 => 2}, 2 => {0 => 1, 2 => 2})
+		@e = Matriz_dispersa.new(0 => {1 => 2, 2 => 1}, 1 => {1 => 3}, 3 => {0 => 1})
+		@f = Matriz_dispersa.new(1 => {1 => 1, 2 => 3}, 2 => {0 => 2})
+		@g = @Matriz_frac * @Matriz_frac2
+		@g[0][0].should eq(Racional.new(2,3))
+		@Matriz_dispersa3 = @a * @b
+		@Matriz_dispersa3[0][0].should eq(16)
+		@Matriz_dispersa3[0][1].should eq(21)
+		@Matriz_dispersa3[2][0].should eq(4)
+		@Matriz_dispersa3[2][1].should eq(6)
+		@Matriz_dispersa3[2][2].should eq(3)
+		@Matriz_dispersa4 = @c * @d
+		@Matriz_dispersa4[0][0].should eq(3)
+		@Matriz_dispersa4[0][2].should eq(2)
+		@Matriz_dispersa4[2][0].should eq(2)
+		@Matriz_dispersa4[2][2].should eq(4)
+		@Matriz_dispersa4 = @e * @f
+		@Matriz_dispersa4[0][0].should eq(2)
+		@Matriz_dispersa4[0][1].should eq(2)
+		@Matriz_dispersa4[0][2].should eq(6)
+		@Matriz_dispersa4[1][1].should eq(3)
+		@Matriz_dispersa4[1][2].should eq(9)
+	end
+	
 end
