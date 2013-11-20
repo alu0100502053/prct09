@@ -245,5 +245,29 @@ describe Matriz_dispersa do
 		@Matriz_dispersa4[1][1].should eq(3)
 		@Matriz_dispersa4[1][2].should eq(9)
 	end
-	
+	it "Debe operar una matriz dispersa con una densa" do
+		@densa = Matriz_densa.new([1,2,4],[4,3,2],[7,6,4])
+		@dispersa = Matriz_dispersa.new(1 => {1 => 1, 2 => 3}, 2 => {0 => 2})
+		@suma = @densa + @dispersa
+		@suma[0][0].should eq(1)
+		@suma[0][1].should eq(2)
+		@suma[0][2].should eq(4)
+		@suma[1][0].should eq(4)
+		@suma[1][1].should eq(4)
+		@suma[1][2].should eq(5)
+		@suma[2][0].should eq(9)
+		@suma[2][1].should eq(6)
+		@suma[2][2].should eq(4)
+
+		@mult = @densa * @dispersa
+		@mult[0][0].should eq(8)
+		@mult[0][1].should eq(2)
+		@mult[0][2].should eq(6)
+		@mult[1][0].should eq(4)
+		@mult[1][1].should eq(3)
+		@mult[1][2].should eq(9)
+		@mult[2][0].should eq(8)
+		@mult[2][1].should eq(6)
+		@mult[2][2].should eq(18)
+	end
 end
