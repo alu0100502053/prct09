@@ -146,6 +146,16 @@ describe Matriz_densa do
 		@Matriz_densa8[0][0].should eq(Racional.new(6,5))
 	end
 
+	it "Debe hallar el maximo de una matriz" do
+		max = @Matriz_densa.maximo
+		max.should eq(9)
+	end
+
+	it "Debe hallar el minimo de una matriz" do
+		min = @Matriz_densa.minimo
+		min.should eq(1)
+	end
+
 	it "Debe restar dos matrices" do
 		@Matriz_densa3 = @Matriz_densa - @Matriz_densa2
 		@Matriz_densa7 = @Matriz_densa5 - @Matriz_densa6
@@ -269,5 +279,15 @@ describe Matriz_dispersa do
 		@mult[2][0].should eq(8)
 		@mult[2][1].should eq(6)
 		@mult[2][2].should eq(18)
+	end
+
+	it "Debe hallar el maximo de una matriz" do
+		max = @Matriz_dispersa.maximo
+		max.should eq(200)
+	end
+
+	it "Debe hallar el minimo de una matriz" do
+		min = @Matriz_dispersa.minimo
+		min.should eq(1)
 	end
 end
