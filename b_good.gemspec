@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = BGood::VERSION
   spec.authors       = ["Killian Jimenez"]
   spec.email         = ["alu0100502053@ull.edu.es"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Gema para matrices dispersas y matrices densas}
+  spec.summary       = %q{Representacion de matrices dispersas y matrices densas}
   spec.homepage      = ""
   spec.license       = "MIT"
 
